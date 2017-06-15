@@ -16,8 +16,9 @@ When the ControllerAgent is done sending out all the StartActions to the PlayerA
 
 # Tests 
 We have performed the test a total of 5 times. The test consists of all PlayerAgents playing against each other 50 times. After each round the players get their utility (years of prison). The lower this utility, the better the strategy works. Before we go on to the results, we need to define the utilities used for this test:
+
 | | A defect | A cooperate |
-| ------ | ------ | ------  |
+| ------ | ------ | ------ |
 | **B defect** | 3, 3 | 0, 5 |
 | **B cooperate** | 5, 0 | 1, 1 |
 

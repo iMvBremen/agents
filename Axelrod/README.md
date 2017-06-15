@@ -20,6 +20,7 @@ We have performed the test a total of 5 times. The test consists of all PlayerAg
 | ------ | ------ | ------  |
 | **B defect** | 3, 3 | 0, 5 |
 | **B cooperate** | 5, 0 | 1, 1 |
+
 What this means is that when both cooperate, both will get a utility of 1. If B cooperates and A defects, then B gets a utility of 0 and A gets a utility of 5. This is the same the other way around. If both defect, then both will get a utility of 3.
 
 #### Results

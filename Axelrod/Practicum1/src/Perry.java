@@ -23,7 +23,7 @@ public class Perry extends Agent {
 	private int metaState = META_STATE_FREE;
 	private AID proposingTo = null;
 
-	private List<AID> agentIds;
+	private List<AID> aids;
 
 	private FifteenStack stack;
 
@@ -31,7 +31,7 @@ public class Perry extends Agent {
 	 * @brief initializes the agent id given through arguments.
 	 */
 	private void initAids() {
-		agentIds = new ArrayList<AID>();
+		aids = new ArrayList<AID>();
 		Object[] args = getArguments();
 		if (args == null) {
 			System.err.println("No arguments given");
@@ -43,7 +43,7 @@ public class Perry extends Agent {
 			if (aid.equals(me)) {
 				continue;
 			}
-			agentIds.add(aid);
+			aids.add(aid);
 		}
 	}
 
@@ -51,11 +51,11 @@ public class Perry extends Agent {
 	 * @brief agent inform all other agents by sending a message with his agent id.
 	 */
 	private void informAll() {
-		if (agentIds.size() != 0) {
+		if (aids.size() != 0) {
 			ACLMessage message = new ACLMessage(ACLMessage.INFORM);
 			message.setLanguage(META);
 			message.setContent(this.getAID().toString());
-			for (AID aid : agentIds) {
+			for (AID aid : aids) {
 				message.addReceiver(aid);
 			}
 			logMessage(message);
@@ -78,12 +78,12 @@ public class Perry extends Agent {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		if (agentIds.size() == 0) {
+		if (aids.size() == 0) {
 			System.err.println("No agents");
 			return;
 		}
-		int i = (int) Math.floor(Math.random() * agentIds.size());
-		proposingTo = agentIds.get(i);
+		int i = (int) Math.floor(Math.random() * aids.size());
+		proposingTo = aids.get(i);
 		changeState(META_STATE_PROPOSAL_SENT);
 		sendTo(proposingTo, META, ACLMessage.PROPOSE);
 	}
